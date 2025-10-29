@@ -47,23 +47,10 @@ builtins.print = custom_print
 
 
 # Batalha Naval
-while True:
-    try:
-        largura = int(input("Digite a largura: "))
-        altura = int(input("Digite a altura: "))
-        while True:
-            num_embarcacoes = int(input(f"Digite o numero de embarcacoes: MAX:{largura*altura} MIN:1 =:"))
 
-            if num_embarcacoes >= 1 and num_embarcacoes <= largura*altura:
-                break
-            else:
-                print("Valores invalidos!")
-    except ValueError:
-        print("Valores invalidos, digite inteiros!!")
-    except Exception as e:
-        print(f"Erro inesperado : {e}")
-    else:
-        break
+largura = 10
+altura = 10
+num_embarcacoes = 5
 
 def imprime_tabuleiro(tabuleiro):
     print("*", end=' ')

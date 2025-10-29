@@ -68,6 +68,20 @@ python batalha_naval.py
 
     • Encerrar o jogo ao final de uma vitória, derrota ou manualmente.
 
+## Interface Visual
+
+O jogo agora exibe os tabuleiros com cores no terminal.
+
+Durante a partida:
+• Cada célula é colorida conforme o tipo (água, erro, acerto, embarcação).
+• O tabuleiro é atualizado automaticamente a cada jogada.
+• Sempre será exibido aonde o computador atacou.
+• Mostrará o mapa do usuário e as movimentações do mesmo.
+• É possível o mapa do computador real.
+
+Ao final:
+• São exibidos os dois tabuleiros lado a lado, permitindo ver o resultado final da partida.
+
 ## Conclusão
 
 O programa oferece um jogo de Batalha Naval tradicional e funcional, permitindo o usuario escolher se quer colocar manualmente suas embarcações ou automatica.
