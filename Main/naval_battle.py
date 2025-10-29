@@ -47,30 +47,52 @@ builtins.print = custom_print
 
 
 # Batalha Naval
+while True:
+    try:
+        largura = int(input("Digite a largura: "))
+        altura = int(input("Digite a altura: "))
+        while True:
+            num_embarcacoes = int(input(f"Digite o numero de embarcacoes: MAX:{largura*altura} MIN:1 =:"))
 
-largura = 6
-altura = 6
-num_embarcacoes = 5
+            if num_embarcacoes >= 1 and num_embarcacoes <= largura*altura:
+                break
+            else:
+                print("Valores invalidos!")
+    except ValueError:
+        print("Valores invalidos, digite inteiros!!")
+    except Exception as e:
+        print(f"Erro inesperado : {e}")
+    else:
+        break
 
 def imprime_tabuleiro(tabuleiro):
-    print("*  1 2 3 4 5 6")
+    print("*", end=' ')
+    for i in range(altura):
+        print(i+1,end=" ")
+    print()
     for x in range(largura):
-        if(x != 9):
-            print(x+1, end="  ")
+        if(x >= 9):
+            print(x+1, end="")
         else:
             print(x+1, end=" ")
 
         for y in range(altura):
-            print(tabuleiro[x][y], end=" ")
+            if y >= 9:
+                print(tabuleiro[x][y], end="  ")
+            else:
+                print(tabuleiro[x][y], end=" ")
+            
         print()
 
 def imprime_visivel(tabuleiro):
     tabuleiro_visivel = copy.deepcopy(tabuleiro) 
-
-    print("*  1 2 3 4 5 6")
+    print("*", end=' ')
+    for i in range(altura):
+        print(i+1,end=" ")
+    print()
     for x in range(largura):
-        if(x != 9):
-            print(x+1, end="  ")
+        if(x >= 9):
+            print(x+1, end="")
         else:
             print(x+1, end=" ")
 
@@ -79,7 +101,10 @@ def imprime_visivel(tabuleiro):
             if tabuleiro_visivel[x][y] not in "OX":
                 tabuleiro_visivel[x][y] = "?" 
 
-            print(tabuleiro_visivel[x][y], end=" ")
+            if y >= 9:
+                print(tabuleiro_visivel[x][y], end="  ")
+            else:
+                print(tabuleiro_visivel[x][y], end=" ")
         
         print()
     
@@ -100,8 +125,9 @@ def monta_escolha(tabuleiro):
                 x -= 1
                 y -= 1
 
-                if x > largura or y > altura or y < 0 or x < 0:
-                    print('Posição invalida! Fora dos limites')
+                if x >= largura or y >= altura or y < 0 or x < 0:
+                    print('Posição inválida! Fora dos limites')
+                    continue
 
                 if tabuleiro[x][y] == 'E':
                     print('Posição ja marcada!')
@@ -130,7 +156,6 @@ def atacar(mapa, x, y):
     if(mapa[x][y] == "E"):
 
         mapa[x][y] = "X"
-            #print("Achou bomba")
 
         return -1
     else:
@@ -222,6 +247,8 @@ def comecarpartida(tabuleiro_computador, tabuleiro_jogador):
         print("Computador venceu!")
 
     print(f"Tiveram {cont} ataques totais!")
+
+    input("Precisone ENTER para seguir...")
     
 
 
